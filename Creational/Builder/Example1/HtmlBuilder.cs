@@ -12,7 +12,7 @@ namespace Design_Patterns.Creational.Builder
 
         public HtmlBuilder(string rootName)
         {
-            root.Name = rootName; 
+            root.Name = rootName;
         }
 
         public void Clear()
@@ -30,7 +30,6 @@ namespace Design_Patterns.Creational.Builder
         public void AddChild(HtmlElement child)
         {
             root.childs.Add(child);
-            
         }
 
         public override string ToString()
