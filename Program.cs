@@ -10,11 +10,15 @@ using Design_Patterns.Creational.Factory.Example3;
 using Design_Patterns.Creational.Factory.Example4;
 using Design_Patterns.Creational.Factory.Example5;
 using Design_Patterns.Creational.Factory.Example6;
+using Design_Patterns.Creational.Prototype.Example2;
+using Design_Patterns.Creational.Prototype.Example3;
 
 
-InitBuilder();
+//InitBuilder();
 
-InitFactory().GetAwaiter().GetResult();
+//InitFactory().GetAwaiter().GetResult();
+
+InitPrototype();
 
 
 static void InitBuilder()
@@ -105,4 +109,43 @@ static async Task InitFactory()
     var machine = new HotDrinkMachine();
     IHotDrink drink = machine.MakeDrink();
     drink.Consume();
+}
+
+static void InitPrototype()
+{
+    // EXAMPLE 1
+    // var address = new Design_Patterns.Creational.Prototype.Example1.Address("Street Test", 3);
+    // var foo = new Design_Patterns.Creational.Prototype.Example1.Person( new string[] {"Abd", "John"}, address);
+
+    // System.Console.WriteLine(foo);
+
+    // var doe = new Design_Patterns.Creational.Prototype.Example1.Person(foo);
+    // doe.Names[1] = "doe";
+    // System.Console.WriteLine(doe);
+
+
+    // EXAMPLE 2
+    var Subjects = new string[] { "Math" , "History"};
+    var studentInfo = new StudentInfo("Abd", "ALI");
+    var std1 = new Student(Subjects , studentInfo );
+
+    System.Console.WriteLine(std1);
+
+    // var std2 = std1.DeepCopy();
+    // std2.Subjects[0] = "Physics";
+    // std2.StudentInfo.FirstName = "MOH";
+
+    // System.Console.WriteLine(std2);
+    // System.Console.WriteLine(std1);
+
+    // Example 3
+
+    Student std3 = std1.DeepCopyBySerialization();
+
+    std3.Subjects[0] = "English";
+
+    System.Console.WriteLine(std3);
+    System.Console.WriteLine(std1);
+
+
 }
